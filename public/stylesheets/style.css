@@ -1,8 +1,60 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Times New Roman", Helvetica, Arial, sans-serif;
+  color: black;
+  text-align: center;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+.hello {
+  margin-top: 200px;
+  font-size: 40pt;
+  color: tomato;
+  text-transform: uppercase;
+}
+
+a {
+  color: rgb(252, 84, 7);
+}
+.error {
+  color: red;
+  font-size: 11pt;
+}
+.loginForm {
+  position: relative;
+  margin: auto;
+  top: 200px;
+  padding: 30px;
+  border: 2px solid tomato;
+  box-shadow: 0 0 15px rgba(5, 5, 5, 0.5);
+  width: 500px;
+  border-radius: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.formTitle {
+  font-size: 16pt;
+  color: tomato;
+}
+.inputForm {
+  background-color: linear-gradient(white, rgb(235, 246, 250));
+  border: 1px solid rgb(255, 115, 0);
+  border-radius: 10px;
+  width: 80%;
+  height: 30px;
+  padding-left: 20px;
+  font-size: 12pt;
+  outline: none;
+}
+.btnSubmit {
+  font-size: 12pt;
+  text-transform: uppercase;
+  color: rgb(248, 203, 166);
+  border: 1px solid rgb(245, 198, 160);
+  height: 35px;
+  outline: none;
+  border-radius: 10px;
+  width: 150px;
+  background: linear-gradient(rgb(252, 119, 42), rgb(199, 71, 12));
 }

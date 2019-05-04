@@ -1,4 +1,7 @@
 const userController = require("../controllers/userController");
+const bcrypt = require("bcryptjs");
+const saltRounds = 12;
+
 
 exports.form = (req, res) => {
   req.session.failed = false;
@@ -9,7 +12,7 @@ exports.form = (req, res) => {
   req.session.errors = null;
 };
 exports.submit = (req, res, next) => {
-  req.session.failed = true;
+  req.session.failed = false;
   req.session.errors = [];
   req.check("email", "Invalid email addres").isEmail();
   req.check("password", "The password is too shortd").isLength({ min: 5 });
@@ -26,18 +29,23 @@ exports.submit = (req, res, next) => {
     req.session.failed = false;
 
     userController.findOne(req.body.email, item => {
-      if ((item||[]).length != 0) {
+      if (item) {
         req.session.errors.push({
           param: "db",
           msg: "A user with this email already exists.",
-          value: item
+          value: item.email
         });
         req.session.failed = true;
         res.redirect("back");
       } else {
+        
+        let salt = bcrypt.genSaltSync(saltRounds);
+        
         const user = {
           email: req.body.email,
-          password: userController.hashedPassword(req.body.password)
+          password: bcrypt.hashSync(req.body.password, salt),
+          salt: salt
+
         };
         userController.create(user, item => {
           if (item) {

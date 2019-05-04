@@ -6,10 +6,13 @@ const logger = require('morgan');
 const expressSession = require("express-session");
 const expressValidator = require("express-validator")
 const bodyParser = require("body-parser");
+const passport = require("passport");
+const flash = require("connect-flash");
 
 const registerRouter = require("./routes/register");
 const usersRouter = require("./routes/users");
 const indexRouter = require("./routes/index");
+const loginRouter = require("./routes/login");
 
 const app = express();
 
@@ -32,12 +35,18 @@ app.use(expressSession({
   resave: false
 }));
 
-
+app.use(flash());
+require("./config/passport");
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/', indexRouter);
 app.get('/users', usersRouter.form);
 app.get('/register', registerRouter.form);
 app.post("/register", registerRouter.submit);
+app.get('/login', loginRouter.form);
+app.post('/login', loginRouter.submit);
+
 
 
 // // catch 404 and forward to error handler

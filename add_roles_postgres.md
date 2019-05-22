@@ -8,3 +8,4 @@
   
 `CREATE DATABASE newusername;`  
 `ALTER DATABASE newusername OWNER TO newusername;`  
+`GRANT ALL privileges ON DATABASE postgres TO sergey;`

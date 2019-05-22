@@ -1,5 +1,5 @@
 Добавление нового пользователя в PostgreSQL  
-  
+==================  
 Добавление нового пользователя в PostgreSQL:  
 `CREATE ROLE newusername LOGIN PASSWORD 'newuserpassword';`  
   
